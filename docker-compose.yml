@@ -1,0 +1,26 @@
+version: '2'
+services:
+  web:
+    build: .
+    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    volumes:
+      - .:/academia
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    links:
+      - db
+    environment:
+      DB_NAME: academia
+      DB_USER: root
+      DB_PASSWORD: password
+      DB_HOST: db
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_USER: root
+      MYSQL_PASSWORD: password
+    ports:
+      - "3307:3306"

@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col-lg-12 md-12">
+    <p id="notice"><%= notice %></p>
+
+    <h1>Exercices</h1>
+    <%= link_to 'New Exercice', new_exercice_path %>
+
+
+      <% Category.all.each do |category| %>
+      <div class="row">
+
+      <div class="col-lg-12 md-12">
+        <h2><%= category.name %></h2>
+          <% @exercices.each do |exercice| %>
+          <div class="col-lg-6 md-6">
+            <% if category.id == exercice.category_id %>
+              <p><%= exercice.name %></p>
+              <p><%= exercice.repetition %></p>
+              <p>
+                <%= link_to 'Show', exercice %>
+                <%= link_to 'Edit', edit_exercice_path(exercice) %>
+                <%= link_to 'Destroy', exercice, method: :delete, data: { confirm: 'Are you sure?' } %>
+              </p>
+            <% end %>
+          </div>
+          <% end %>
+        </div>
+      </div>
+      <% end %>
+  </div>
+</div>

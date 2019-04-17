@@ -1,0 +1,53 @@
+<%= form_with(model: person, local: true) do |form| %>
+  <% if person.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(person.errors.count, "error") %> prohibited this person from being saved:</h2>
+
+      <ul>
+      <% person.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :photo %>
+    <%= form.file_field :photo %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :weight %>
+    <%= form.text_field :weight %>
+  </div>
+
+  <div class="field">
+    <%= form.label :height %>
+    <%= form.text_field :height %>
+  </div>
+
+  <div class="field">
+    <%= form.label :imc %>
+    <%= form.text_field :imc %>
+  </div>
+
+  <div class="field">
+    <%= form.label :exercices %>
+    <%= form.select :exercice_id, Exercice.all.collect { |user| [user.name, user.id]},  multiple:true , class: 'form-control'%>
+    <%= form.select :exercice_id,
+                Exercice.all.collect { |user| [user.name, user.id]},
+                :prompt => "Select Exercices",
+                :multiple => true
+%>
+  </div>
+
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

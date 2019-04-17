@@ -1,0 +1,32 @@
+<div class="container">
+
+<p id="notice"><%= notice %></p>
+
+<div class="img img-thumbnail img-responsive" size:"300x700">
+
+</div>
+<%= image_tag @person.photo %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @person.name %>
+</p>
+
+<p>
+  <strong>Weight:</strong>
+  <%= @person.weight %>
+</p>
+
+<p>
+  <strong>Height:</strong>
+  <%= @person.height %>
+</p>
+
+<p>
+  <strong>Imc:</strong>
+  <%= @person.imc %>
+</p>
+
+<%= link_to 'Edit', edit_person_path(@person) %> |
+<%= link_to 'Back', people_path %>
+</div>
